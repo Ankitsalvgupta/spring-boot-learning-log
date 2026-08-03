@@ -1,47 +1,37 @@
-# CakeBaker
+# Spring Boot Learning Log
 
-A small Spring Boot project demonstrating **Dependency Injection (DI)** using constructor injection and `@Qualifier` to resolve multiple implementations of the same interface.
+Weekly Spring Boot assignments and mini-projects, one topic per week, as I learn backend development. Each week is a fully independent, runnable Spring Boot project.
 
-## What it does
+## Weeks
 
-`CakeBaker` depends on two abstractions — `Frosting` and `Syrup` — each with two concrete flavors (Chocolate and Strawberry). Spring injects the chosen implementations into `CakeBaker` at startup, and `bakeCake()` is invoked automatically when the application runs.
+| Week | Project | Focus |
+|---|---|---|
+| 1 | [CakeBaker](./week1-cakebaker) | Dependency Injection — constructor injection, `@Qualifier` for resolving multiple bean implementations |
+| 2 | [Employee & Department](./week2-employee-department) | CRUD REST APIs, DTO ↔ Entity mapping, custom validation annotations, global exception handling, H2 database |
 
-## Project structure
+<!--
+  Adding a new week? Just add one row above, following the same pattern:
+  | X | [Project Name](./weekX-project-folder) | One-line summary of what it covers |
+
+  If the new week introduces a new tool/library not already listed below,
+  add it to the Tech stack section too.
+-->
+
+## Structure
 
 ```
-src/main/java/com/ankit/cakebaker/CakeBaker/
-├── CakeBakerApplication.java        # Entry point; runs bakeCake() on startup via CommandLineRunner
-├── model/
-│   ├── Frosting.java                 # Interface: getFrostingType()
-│   └── Syrup.java                    # Interface: getSyrupType()
-├── impl/
-│   ├── chocolate/
-│   │   ├── ChocolateFrosting.java     # @Component @Qualifier("chocoFrost")
-│   │   └── ChocolateSyrup.java        # @Component @Qualifier("chocoSyrup")
-│   └── strawberry/
-│       ├── StrawberryFrosting.java    # @Component @Qualifier("strawFrost")
-│       └── StrawberrySyrup.java       # @Component @Qualifier("strawSyrup")
-└── service/
-    └── CakeBaker.java                # @Service; depends on Frosting + Syrup, exposes bakeCake()
+spring-boot-learning-log/
+├── week1-cakebaker/
+├── week2-employee-department/
+└── ...
 ```
 
-## How Dependency Injection is used
+Each `weekN-*` folder is a standalone Maven project with its own `pom.xml`, `src/`, and `README.md` — clone the repo and run any week on its own.
 
-- `Frosting` and `Syrup` each have two implementations, so Spring can't auto-wire one without help.
-- `@Qualifier("...")` on each implementation, matched by `@Qualifier("...")` on the `CakeBaker` constructor parameters, tells Spring exactly which bean to inject.
-- `CakeBaker` uses **constructor injection** (the recommended approach — dependencies are explicit, fields can be `final`, and it's easy to unit test).
-- `CakeBakerApplication` implements `CommandLineRunner` and has `CakeBaker` injected into its own constructor. Spring Boot automatically calls `run()` after the application context starts, which in turn calls `cakeBaker.bakeCake()`.
-
-Currently wired to **Chocolate** frosting + **Chocolate** syrup. To switch flavors, change the `@Qualifier` values in `CakeBaker`'s constructor to `"strawFrost"` / `"strawSyrup"`.
-
-## Requirements
-
-- Java 21
-- Maven (or use the included `mvnw` / `mvnw.cmd` wrapper)
-
-## Running the project
+## Running any week's project
 
 ```bash
+cd week<N>-<name>
 ./mvnw spring-boot:run
 ```
 
@@ -50,16 +40,14 @@ On Windows:
 mvnw.cmd spring-boot:run
 ```
 
-### Expected output
-
-```
-Baking cake with frosting type: Chocolate Frosting
-Baking cake with syrup type: Chocolate Syrup
-```
-
 ## Tech stack
 
-- Spring Boot 4.1.0
-- Spring Framework 7
+Combined across all weeks so far:
+
 - Java 21
+- Spring Boot
 - Maven
+- Spring Data JPA
+- H2 Database
+- ModelMapper
+- Jakarta Bean Validation
