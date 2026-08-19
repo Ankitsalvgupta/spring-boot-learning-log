@@ -1,0 +1,18 @@
+# Copy this file to application.yaml and fill in your values.
+
+spring:
+  application:
+    name: LibraryManagement
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+# Environment variables required:
+# DB_URL      = jdbc:postgresql://localhost:5432/your_db_name Or any other driver of your choice
+# DB_USERNAME = your_postgresql_username
+# DB_PASSWORD = your_postgresql_password
