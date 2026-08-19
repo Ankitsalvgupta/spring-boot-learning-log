@@ -8,14 +8,7 @@ Weekly Spring Boot assignments and mini-projects, one topic per week, as I learn
 |---|---|---|
 | 1 | [CakeBaker](./week1-cakebaker) | Dependency Injection — constructor injection, `@Qualifier` for resolving multiple bean implementations |
 | 2 | [Employee & Department](./week2-employee-department) | CRUD REST APIs, DTO ↔ Entity mapping, custom validation annotations, global exception handling, H2 database |
-
-<!--
-  Adding a new week? Just add one row above, following the same pattern:
-  | X | [Project Name](./weekX-project-folder) | One-line summary of what it covers |
-
-  If the new week introduces a new tool/library not already listed below,
-  add it to the Tech stack section too.
--->
+| 3 | [Library Management](./week3-librarymanagement) | Entity relationships (`@OneToMany`/`@ManyToOne`), custom JPQL queries, `@EntityGraph` to avoid N+1 queries, PostgreSQL, pagination & sorting |
 
 ## Structure
 
@@ -23,6 +16,7 @@ Weekly Spring Boot assignments and mini-projects, one topic per week, as I learn
 spring-boot-learning-log/
 ├── week1-cakebaker/
 ├── week2-employee-department/
+├── week3-librarymanagement/
 └── ...
 ```
 
@@ -44,10 +38,11 @@ mvnw.cmd spring-boot:run
 
 Combined across all weeks so far:
 
-- Java 21
+- Java 21 / 26
 - Spring Boot
 - Maven
 - Spring Data JPA
 - H2 Database
+- PostgreSQL
 - ModelMapper
 - Jakarta Bean Validation
