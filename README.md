@@ -2,6 +2,12 @@
 
 Weekly Spring Boot assignments and mini-projects, one topic per week, as I learn backend development. Each week is a fully independent, runnable Spring Boot project.
 
+## Prerequisites
+
+- JDK 21+ (some weeks may require a newer version — check each project's own README)
+- Maven (or use the included `./mvnw` wrapper — no local Maven install needed)
+- A running database instance where required (H2 is in-memory and needs no setup; PostgreSQL-based weeks need a local Postgres server)
+
 ## Weeks
 
 | Week | Project | Focus |
